@@ -28,11 +28,6 @@ module.exports = {
     rules: [
       { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
       {
-<<<<<<< Updated upstream
-        test: /(\.css)$/,
-        use: ['style-loader', 'css-loader']
-      }, {
-=======
         test: /\.scss$/, loaders: [{
             loader: 'style-loader'
         }, {
@@ -47,7 +42,6 @@ module.exports = {
         ]
       },
       {
->>>>>>> Stashed changes
         test: /(\.jsx|\.js)$/,
         exclude: /node_modules/,
         use: 'babel-loader'
