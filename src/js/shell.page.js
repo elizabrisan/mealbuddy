@@ -6,7 +6,6 @@ import {ConnectedRouter} from 'react-router-redux';
 
 import FrontPage from './pages/front/front.page';
 import FridgePage from './pages/fridge/fridge.page';
-
 import RoundProgress from './components/round.progress.component'
 
 export class ShellPage extends React.Component {

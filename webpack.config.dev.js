@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const dirname = path.resolve(__dirname, '..');
 
 module.exports = {
   context: __dirname + '/src',
@@ -34,7 +35,7 @@ module.exports = {
             loader: 'css-loader'
         }, {
             loader: 'sass-loader', options: {
-                paths: [
+                includePaths: [
                     path.resolve(__dirname, "./assets/scss")
                 ]
             }
