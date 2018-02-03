@@ -101,7 +101,7 @@ const root = (state = {
       }
       break;
 
-    case 'ADD_TO_SHOPPINGLIST_FULFILLED':
+    case 'ADD_TO_SHOPPING_LIST_FULFILLED':
       newState = {
         ...state,
         shoppingList: action.payload.content
@@ -123,6 +123,13 @@ const root = (state = {
       }
       break;
 
+      
+      case 'MOVE_TO_FRIDGE_FULFILLED':
+        newState = {
+          ...state,
+          shoppingList: action.payload.content
+        }
+        break;
   }
 
   return newState;

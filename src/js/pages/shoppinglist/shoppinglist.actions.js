@@ -17,6 +17,26 @@ export function addToShoppingList(item) {
     })
   }
 }
+
+export function moveToFridge(item) {
+  return {
+    type: 'MOVE_TO_FRIDGE',
+    payload: Storage.getShoppingList().then(data => {
+      data.content.splice(data.content.indexOf(item), 1);
+      return Storage.saveShoppingList(data)
+    }).then(() => {
+      return Storage.getFridge().then((fridgeData) => {
+        if (fridgeData.content.indexOf(item) === -1) {
+          fridgeData.content.push(item);
+        }
+        return Storage.saveFridge(fridgeData)
+      }).then(() => {
+        return Storage.getShoppingList()
+      });
+    })
+  }
+}
+
 export function removeFromShoppingList(item) {
   return {
     type: 'REMOVE_FROM_SHOPPING_LIST',
