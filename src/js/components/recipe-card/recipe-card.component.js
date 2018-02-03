@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getById } from './recipe-card.actions';
+
 require("./recipe-card.component.scss");
 
-export default class RecipeCard extends Component {
+class RecipeCard extends Component {
+
+  constructor(props) {
+    super(props);
+    this.props._getById(props.recipe.idMeal);
+  }
+
   render() {
     return (
       <div className="recipe-card">
           <div className="body">
             <img className="image" src={'http://' + this.props.recipe.strMealThumb}></img>
             <div className="footer">
+              <span className="info">
+              </span>
               <div className="name">{this.props.recipe.strMeal}</div>
               <div className="descr">{this.props.recipe.strInstructions}</div>
             </div>
@@ -16,3 +27,18 @@ export default class RecipeCard extends Component {
     )
   }
 }
+
+
+const mapStateToProps = (state) => {
+  return state.root
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    _getById: (id) => {
+      dispatch(getById(id));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeCard);

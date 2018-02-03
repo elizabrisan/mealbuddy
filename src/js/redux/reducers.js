@@ -12,6 +12,7 @@ import {
 let mappedRouteValues = {};
 
 const root = (state = {
+  loaded: false,
   recipes: [],
   shoppingList: [],
   content: [],
@@ -44,10 +45,38 @@ const root = (state = {
         content: action.payload.content
       }
       break;
+    case 'GET_RECIPES_FULFILLED_PENDING':
+      newState = {
+        ...state,
+        loaded: false
+      }
+      break;
     case 'GET_RECIPES_FULFILLED':
       newState = {
         ...state,
-        recipes: action.payload.meals,
+        loaded: true,
+        recipes: action.payload.meals && action.payload.meals !== null
+          ? action.payload.meals
+          : [],
+        initialized: true
+      }
+      break;
+
+    case 'GET_RECIPE_BY_ID_FULFILLED':
+    const id = action.payload.meals[0].idMeal;
+      let found = state.recipes.findIndex((recipe) => {
+        return recipe.idMeal === id;
+      })
+
+      newState = {
+        ...state,
+        recipes: [
+          ...state.recipes.slice(0, found),
+          {
+            ...action.payload.meals[0]
+          },
+          ...state.recipes.slice(found + 1),
+        ],
         initialized: true
       }
       break;
