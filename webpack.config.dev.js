@@ -74,6 +74,16 @@ module.exports = {
         target: 'http://www.themealdb.com/',
         secure: false,
         changeOrigin: true
+      },
+      '*': {
+        bypass: function (req, res, proxyOptions) {
+          if (req.url.indexOf('.') !== -1) {
+            req.url = req.url.replace(/^.*[\\\/]/, '/');
+            return req.url;
+          } else {
+            return '/index.html';
+          }
+        }
       }
     }
   }

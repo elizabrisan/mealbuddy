@@ -5,6 +5,8 @@ import {Route} from 'react-router';
 import {ConnectedRouter} from 'react-router-redux';
 
 import FrontPage from './pages/front/front.page';
+import FridgePage from './pages/fridge/fridge.page';
+
 import RoundProgress from './components/round.progress.component'
 
 export class ShellPage extends React.Component {
@@ -12,8 +14,8 @@ export class ShellPage extends React.Component {
     return (<ConnectedRouter history={this.props.history}>
 
       <div className="container">
-        <RoundProgress text="3/5" progress={30}/>
         <Route path="/" exact={true} component={FrontPage}></Route>
+        <Route path="/fridge" component={FridgePage}></Route>
       </div>
     </ConnectedRouter >)
   }
