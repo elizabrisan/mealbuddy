@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {initialize} from './front.actions';
+import RecipeCard from '../../components/recipe-card/recipe-card.component';
 
 class FrontPage extends React.Component {
 
@@ -12,7 +13,11 @@ class FrontPage extends React.Component {
 
   render() {
     console.log(this.props.recipes);
-    return (<div>Front Page</div>)
+    return (<div>Front Page
+        { this.props.recipes.map(item => {
+          return (<RecipeCard key={item.idMeal} recipe={item}/>)
+        })}
+      </div>)
   }
 
 }

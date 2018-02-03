@@ -7,7 +7,7 @@ export default(state = {
     case 'GET_RANDOM_RECIPE_FULFILLED':
       newState = {
         ...state,
-        recipes: action.payload,
+        recipes: action.payload.meals,
         initialized: true
       }
       break;
