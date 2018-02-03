@@ -65,7 +65,7 @@ class FridgePage extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  return state.fridge
+  return state.root
 }
 
 const mapDispatchToProps = (dispatch) => {
