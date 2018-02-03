@@ -1,5 +1,5 @@
 {
-    "name": "elements-ui",
+    "name": "mealbuddy",
     "version": "0.0.1",
     "description": "",
     "main": "index.js",
@@ -8,9 +8,10 @@
     "scripts": {
         "dev": "webpack-dev-server --config webpack.config.dev.js --inline --hot --contentBase src",
         "css": "npm-run-all css-compile",
-        "css-compile": "node-sass --output-style expanded --source-map true --precision 6 assets/scss/app.scss assets/css/app.css"
+        "css-compile": "node-sass -w --output-style expanded --source-map true --precision 6 assets/scss/app.scss assets/css/app.css"
     },
     "dependencies": {
+        "bootstrap": "^4.0.0",
         "lodash": "^4.17.4",
         "prop-types": "^15.6.0",
         "react": "^15.6.1",

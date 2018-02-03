@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-
 import {Route} from 'react-router';
 import {ConnectedRouter} from 'react-router-redux';
 
@@ -10,7 +9,9 @@ import FrontPage from './pages/front/front.page';
 export class ShellPage extends React.Component {
   render() {
     return (<ConnectedRouter history={this.props.history}>
-      <Route path="/" exact={true} component={FrontPage}></Route>
+      <div className="container">
+        <Route path="/" exact={true} component={FrontPage}></Route>
+      </div>
     </ConnectedRouter >)
   }
 }
