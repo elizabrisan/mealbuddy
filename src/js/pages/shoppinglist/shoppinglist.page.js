@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {initialize, addToShoppingList, removeFromShoppingList} from './shoppinglist.actions';
+import {initialize, addToShoppingList, removeFromShoppingList, moveToFridge} from './shoppinglist.actions';
 
 class ShoppingListPage extends React.Component {
 
@@ -38,10 +38,13 @@ class ShoppingListPage extends React.Component {
             this.props.shoppingList.map(item => {
               return (
                 <li key={item} className="list-group-item d-flex justify-content-between align-items-center">
-                    <span>{item}</span>
-                    <button onClick={() => {
-                        this.props._removeFromFridge(item);
-                      }}>Remove</button>
+                  <span>{item}</span>
+                  <button onClick={() => {
+                      this.props._removeFromShoppingList(item);
+                    }}>Remove</button>
+                  <button onClick={() => {
+                      this.props._moveToFridge(item);
+                    }}>Move to fridge</button>
                 </li>
               )
             })
@@ -63,7 +66,10 @@ const mapDispatchToProps = (dispatch) => {
     _addToShoppingList: (item) => {
       dispatch(addToShoppingList(item))
     },
-    _removeFromFridge: (item) => {
+    _moveToFridge: (item) => {
+      dispatch(moveToFridge(item))
+    },
+    _removeFromShoppingList: (item) => {
       dispatch(removeFromShoppingList(item))
     }
   }
