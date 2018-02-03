@@ -11,11 +11,11 @@ export default class RecipeApi {
   }
 
   static getRecipesByCategory(category) {
-    return api.callApi('get', {uri: `/v1/1/filter.php?i=${category}`});
+    return api.callApi('get', {uri: `/v1/1/filter.php?c=${category}`});
   }
 
   static getRecipesByArea(area) {
-    return api.callApi('get', {uri: `/v1/1/filter.php?i=${area}`});
+    return api.callApi('get', {uri: `/v1/1/filter.php?a=${area}`});
   }
 
   static getRecipesByName(name) {
