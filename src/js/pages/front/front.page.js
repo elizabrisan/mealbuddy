@@ -13,7 +13,7 @@ class FrontPage extends React.Component {
 
   render() {
     console.log(this.props.recipes);
-    return (<div>Front Page
+    return (<div>
         { this.props.recipes.map(item => {
           return (<RecipeCard key={item.idMeal} recipe={item}/>)
         })}

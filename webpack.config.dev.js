@@ -42,12 +42,17 @@ module.exports = {
           }
         ]
       },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loaders: ['file-loader'] },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loaders: ['url-loader?limit=10000&mimetype=application/octet-stream'] },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loaders: ['url-loader?limit=1000&mimetype=image/svg+xml'] },
+      { test: /\.(woff|woff2)$/, loaders: ['url-loader?prefix=font/&limit=5000'] },
+      { test: /\.otf$/, loaders: ['file-loader?prefix=font/&limit=5000'] },
       {
         test: /(\.jsx|\.js)$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       }, {
-        test: /\.html|\.jpg|\.woff|\.svg|\.ttf|.eot$/,
+        test: /\.html|\.jpg$/,
         use: 'file-loader'
       }
     ]
@@ -76,8 +81,9 @@ module.exports = {
         secure: false,
         changeOrigin: true
       },
-      '*': {
+      '**': {
         bypass: function (req, res, proxyOptions) {
+          console.log(req.url);
           if (req.url.indexOf('.') !== -1) {
             req.url = req.url.replace(/^.*[\\\/]/, '/');
             return req.url;

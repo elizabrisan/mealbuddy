@@ -1,14 +1,14 @@
 @import "variables";
 
 .recipe-card {
-  background: $white;
-  
-
-  .title {
-    font-size: 20px;
+  .card-image {
+    width: 100%;
   }
 
-  .body {
-
+  .card-text {
+    margin: 10px;
+    height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

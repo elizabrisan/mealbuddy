@@ -8,7 +8,9 @@ import {Provider} from "react-redux";
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import ShellPage from './shell.page'
+import 'font-awesome/scss/font-awesome.scss';  
 require("../../assets/scss/app.scss");
+
 
 injectTapEventPlugin();
 const store = configureStore();
