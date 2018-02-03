@@ -14,7 +14,7 @@ class FrontPage extends React.Component {
 
   render() {
     return (
-        <span>
+        <span className="row">
         {
           this.props.recipes.length > 0
             ? this.props.recipes.map(item => {

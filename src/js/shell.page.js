@@ -17,9 +17,9 @@ export class ShellPage extends React.Component {
       <ConnectedRouter history={this.props.history}>
         <span>
           <Header/>
-          <div className="container">
+          <div>
             <Loader loaded={this.props.loaded}>
-              <div className="row">
+              <div className="container-fluid pl-5 pr-5">
                 <Route path="/" exact={true} component={FrontPage}></Route>
                 <Route path="/fridge" component={FridgePage}></Route>
                 <Route path="/shoppinglist" component={ShoppingListPage}></Route>
