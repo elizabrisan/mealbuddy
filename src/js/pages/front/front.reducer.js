@@ -4,7 +4,7 @@ export default(state = {
   let newState = state;
   switch (action.type) {
 
-    case 'GET_RECIPES_FULFILLED':
+    case 'GET_RANDOM_RECIPE_FULFILLED':
       newState = {
         ...state,
         recipes: action.payload,
