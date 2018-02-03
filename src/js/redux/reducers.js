@@ -5,6 +5,7 @@ import {routerReducer} from 'react-router-redux'
 
 import front from '../pages/front/front.reducer';
 import fridge from '../pages/fridge/fridge.reducer';
+import shoppingList from '../pages/shoppinglist/shoppinglist.reducer';
 
 
 let mappedRouteValues = {};
@@ -29,6 +30,7 @@ export default function createReducer(asyncReducers) {
     root,
     front,
     fridge,
+    shoppingList,
     router: routerReducer
   });
 }

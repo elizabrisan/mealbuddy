@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {initialize, addToFridge, removeFromFridge} from './fridge.actions';
+import {initialize, addToShoppingList, removeFromShoppingList} from './shoppinglist.actions';
 
-class FridgePage extends React.Component {
+class ShoppingListPage extends React.Component {
 
   constructor(props) {
     super(props);
@@ -22,7 +22,7 @@ class FridgePage extends React.Component {
             let {val} = this.state;
 
             if (val && this.props.content.indexOf(val) === -1) {
-              this.props._addToFridge(val);
+              this.props._addToShoppingList(val);
               this.setState({val: ''})
             }
 
@@ -30,7 +30,7 @@ class FridgePage extends React.Component {
           name="submit">
           <input className="form-control" onChange={(e) => {
               this.setState({val: e.target.value})
-            }} placeholder="Add to fridge"/>
+            }} placeholder="Add to ShoppingList"/>
           <button type="submit">Add</button>
         </form>
         <ul className="list-group">
@@ -40,7 +40,7 @@ class FridgePage extends React.Component {
                 <li key={item} className="list-group-item d-flex justify-content-between align-items-center">
                     <span>{item}</span>
                     <button onClick={() => {
-                        this.props._removeFromFridge(item)
+                        this.props._removeFromFridge(item);
                       }}>Remove</button>
                 </li>
               )
@@ -52,7 +52,7 @@ class FridgePage extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  return state.fridge
+  return state.shoppingList
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -60,13 +60,13 @@ const mapDispatchToProps = (dispatch) => {
     _initialize: () => {
       dispatch(initialize());
     },
-    _addToFridge: (item) => {
-      dispatch(addToFridge(item))
+    _addToShoppingList: (item) => {
+      dispatch(addToShoppingList(item))
     },
     _removeFromFridge: (item) => {
-      dispatch(removeFromFridge(item))
+      dispatch(removeFromShoppingList(item))
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FridgePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingListPage);

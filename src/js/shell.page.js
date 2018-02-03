@@ -6,6 +6,7 @@ import {ConnectedRouter} from 'react-router-redux';
 
 import FrontPage from './pages/front/front.page';
 import FridgePage from './pages/fridge/fridge.page';
+import ShoppingListPage from './pages/shoppinglist/shoppinglist.page';
 import RoundProgress from './components/round.progress.component'
 import Header from './components/header.component'
 
@@ -19,6 +20,7 @@ export class ShellPage extends React.Component {
             <div className="row">
               <Route path="/" exact={true} component={FrontPage}></Route>
               <Route path="/fridge" component={FridgePage}></Route>
+            <Route path="/shoppinglist" component={ShoppingListPage}></Route>
             </div>
           </div>
         </span>
