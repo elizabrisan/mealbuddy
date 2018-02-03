@@ -6,6 +6,7 @@ import {routerReducer} from 'react-router-redux'
 let mappedRouteValues = {};
 
 const root = (state = {
+  loaded: false,
   recipes: [],
   shoppingList: [],
   content: []
@@ -37,10 +38,19 @@ const root = (state = {
         content: action.payload.content
       }
       break;
+    case 'GET_RECIPES_FULFILLED_PENDING':
+      newState = {
+        ...state,
+        loaded: false
+      }
+      break;
     case 'GET_RECIPES_FULFILLED':
       newState = {
         ...state,
-        recipes: action.payload.meals,
+        loaded: true,
+        recipes: action.payload.meals && action.payload.meals !== null
+          ? action.payload.meals
+          : [],
         initialized: true
       }
       break;

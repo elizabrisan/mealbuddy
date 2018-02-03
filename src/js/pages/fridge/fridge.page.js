@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {push} from 'react-router-redux';
 
 import {initialize, addToFridge, removeFromFridge} from './fridge.actions';
 
@@ -15,7 +16,7 @@ class FridgePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='col-12'>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -31,17 +32,23 @@ class FridgePage extends React.Component {
           <input className="form-control" onChange={(e) => {
               this.setState({val: e.target.value})
             }} placeholder="Add to fridge"/>
-          <button type="submit">Add</button>
+          <button style={{
+              display: 'none'
+            }} type="submit">Add</button>
         </form>
         <ul className="list-group">
           {
             this.props.content.map(item => {
               return (
-                <li key={item} className="list-group-item d-flex justify-content-between align-items-center">
-                    <span>{item}</span>
-                    <button onClick={() => {
-                        this.props._removeFromFridge(item)
-                      }}>Remove</button>
+                <li key={item}
+                  onClick = {() => {
+                    this.props._goToMain(item)
+                  }}
+                  className="list-group-item d-flex justify-content-between align-items-center">
+                  <span>{item}</span>
+                  <button onClick={() => {
+                      this.props._removeFromFridge(item)
+                    }}>Remove</button>
                 </li>
               )
             })
@@ -65,6 +72,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     _removeFromFridge: (item) => {
       dispatch(removeFromFridge(item))
+    },
+    _goToMain: (ingredient) => {
+      dispatch(push('/', {ingredient}))
     }
   }
 }
