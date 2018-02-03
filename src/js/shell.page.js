@@ -9,6 +9,7 @@ import FridgePage from './pages/fridge/fridge.page';
 import ShoppingListPage from './pages/shoppinglist/shoppinglist.page';
 import RoundProgress from './components/round.progress.component'
 import Header from './components/header.component'
+import Loader from './components/loader.component'
 
 export class ShellPage extends React.Component {
   render() {
@@ -17,11 +18,13 @@ export class ShellPage extends React.Component {
         <span>
           <Header/>
           <div className="container">
-            <div className="row">
-              <Route path="/" exact={true} component={FrontPage}></Route>
-              <Route path="/fridge" component={FridgePage}></Route>
-              <Route path="/shoppinglist" component={ShoppingListPage}></Route>
-            </div>
+            <Loader loaded={this.props.loaded}>
+              <div className="row">
+                <Route path="/" exact={true} component={FrontPage}></Route>
+                <Route path="/fridge" component={FridgePage}></Route>
+                <Route path="/shoppinglist" component={ShoppingListPage}></Route>
+              </div>
+            </Loader>
           </div>
         </span>
       </ConnectedRouter >

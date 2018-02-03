@@ -22,11 +22,18 @@ const root = (state = {
   let newState = state;
 
   switch (action.type) {
+    case '@@router/LOCATION_CHANGE':
+      newState = {
+        ...state,
+        recipes: []
+      }
+      break;
     case 'GET_FRIDGE_FULFILLED':
       newState = {
         ...state,
         fridge: action.payload,
-        content: action.payload.content
+        content: action.payload.content,
+        loaded: true
       }
       break;
 
@@ -51,6 +58,12 @@ const root = (state = {
         loaded: false
       }
       break;
+    case 'GET_RECIPES':
+      newState = {
+        ...state,
+        recipes: []
+      }
+      break;
     case 'GET_RECIPES_FULFILLED':
       newState = {
         ...state,
@@ -68,15 +81,15 @@ const root = (state = {
         return recipe.idMeal === id;
       })
 
+      console.log(id, found)
+
       newState = {
         ...state,
-        recipes: [
-          ...state.recipes.slice(0, found),
-          {
-            ...action.payload.meals[0]
-          },
-          ...state.recipes.slice(found + 1),
-        ],
+        // recipes: [
+        //   ...state.recipes.slice(0, found),
+        //   action.payload.meals[0],
+        //   ...state.recipes.slice(found+1),
+        // ],
         initialized: true
       }
       break;
@@ -105,8 +118,10 @@ const root = (state = {
     case 'GET_INGREDIENTS_LIST_FULFILLED':
       newState = {
         ...state,
+        loaded: true,
         ingredientsList: action.payload.meals
       }
+      break;
 
   }
 
