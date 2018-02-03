@@ -1,0 +1,96 @@
+$loader-size: 4em;
+$check-height: $loader-size/3;
+$check-width: $check-height/2;
+$check-left: ($loader-size/6 + $loader-size/12);
+$check-thickness: 3px;
+$check-color: #fff ;
+$bg: #3875d8;
+$bg: #3875d8;
+$size: 0.3em;
+$progress-bg:#3498db;
+$gray:#a1a4a8;
+$cancelbg:#f44242;
+
+
+@mixin size($w, $h) {
+  height: $h;
+  width: $w;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+.set-size {
+  font-size: 10em;
+}
+
+.charts-container:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+
+.pie-wrapper {
+  @include size($size, $size);
+  float: left;
+  margin: 15px;
+  position: relative;
+
+  &:nth-child(3n+1) {
+    clear: both;
+  }
+
+  .pie {
+    @include size(100%, 100%);
+    clip: rect(0, $size, $size, $size / 2);
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    .half-circle {
+      @include size(100%, 100%);
+      border: $size / 10 solid $progress-bg;
+      border-radius: 50%;
+      clip: rect(0, $size / 2, $size, 0);
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .label {
+    $font-size: $size / 4;
+    $font-size-redo: $size * 15;
+    background: $bg;
+    border-radius: 50%;
+    bottom: $font-size-redo / 10;
+    color:$check-color;
+    cursor: default;
+    display: block;
+    vertical-align: middle;
+    font-size: $font-size;
+    left: $font-size-redo / 10;
+    line-height: $font-size-redo * .65;
+    position: absolute;
+    right: $font-size-redo / 10;
+    text-align: center;
+    top: $font-size-redo / 10;
+  }
+
+  .shadow {
+    @include size(100%, 100%);
+    border: $size / 10 solid $check-color;
+    border-radius: 50%;
+  }
+
+  &.style-2 {
+    .label {
+      background: none;
+      color: $check-color;
+    }
+  }
+}
