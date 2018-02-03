@@ -127,6 +127,15 @@ const root = (state = {
         shoppingList: action.payload.content
       }
       break;
+
+    case 'MOVE_TO_SHOPPING_LIST_FULFILLED':
+      newState = {
+        ...state,
+        fridge: action.payload,
+        content: action.payload.content
+      }
+      break;
+
   }
 
   return newState;

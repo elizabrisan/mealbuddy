@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
-import {initialize, addToFridge, removeFromFridge} from './fridge.actions';
+import {initialize, addToFridge, removeFromFridge, moveToShoppingList} from './fridge.actions';
 
 class FridgePage extends React.Component {
 
@@ -48,6 +48,10 @@ class FridgePage extends React.Component {
                       e.stopPropagation()
                       this.props._removeFromFridge(item)
                     }}>Remove</button>
+                  <button onClick={(e) => {
+                      e.stopPropagation()
+                      this.props._moveToShoppingList(item);
+                    }}>Move to shopping list</button>
                 </li>
               )
             })
@@ -68,6 +72,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     _addToFridge: (item) => {
       dispatch(addToFridge(item))
+    },
+    _moveToShoppingList: (item) => {
+      dispatch(moveToShoppingList(item))
     },
     _removeFromFridge: (item) => {
       dispatch(removeFromFridge(item))

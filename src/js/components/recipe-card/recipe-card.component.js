@@ -13,7 +13,7 @@ class RecipeCard extends Component {
 
   render() {
     return (
-      <div className="recipe-card">
+      <div className="recipe-card col-12 col-sm-6 col-md-4 col-xl-3">
           <div className="body">
             <img className="image" src={'http://' + this.props.recipe.strMealThumb}></img>
             <div className="footer">

@@ -18,6 +18,26 @@ export function addToFridge(item) {
     })
   }
 }
+
+export function moveToShoppingList(item) {
+  return {
+    type: 'MOVE_TO_SHOPPING_LIST',
+    payload: Storage.getFridge().then(data => {
+      data.content.splice(data.content.indexOf(item), 1);
+      return Storage.saveFridge(data)
+    }).then(() => {
+      return Storage.getShoppingList().then((shoppingListData) => {
+        if (shoppingListData.content.indexOf(item) === -1) {
+          shoppingListData.content.push(item);
+        }
+        return Storage.saveShoppingList(shoppingListData)
+      }).then(() => {
+        return Storage.getFridge()
+      });
+    })
+  }
+}
+
 export function removeFromFridge(item) {
   return {
     type: 'REMOVE_FROM_FRIDGE',
