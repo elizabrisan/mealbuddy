@@ -26,10 +26,28 @@ module.exports = {
 
   module: {
     rules: [
+      { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
       {
+<<<<<<< Updated upstream
         test: /(\.css)$/,
         use: ['style-loader', 'css-loader']
       }, {
+=======
+        test: /\.scss$/, loaders: [{
+            loader: 'style-loader'
+        }, {
+            loader: 'css-loader'
+        }, {
+            loader: 'sass-loader', options: {
+                paths: [
+                    path.resolve(__dirname, "./assets/scss")
+                ]
+            }
+          }
+        ]
+      },
+      {
+>>>>>>> Stashed changes
         test: /(\.jsx|\.js)$/,
         exclude: /node_modules/,
         use: 'babel-loader'

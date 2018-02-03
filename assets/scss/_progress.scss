@@ -1,16 +1,11 @@
+@import "variables";
+
 $loader-size: 4em;
 $check-height: $loader-size/3;
 $check-width: $check-height/2;
 $check-left: ($loader-size/6 + $loader-size/12);
 $check-thickness: 3px;
-$check-color: #fff ;
-$bg: #3875d8;
-$bg: #3875d8;
 $size: 0.3em;
-$progress-bg:#3498db;
-$gray:#a1a4a8;
-$cancelbg:#f44242;
-
 
 @mixin size($w, $h) {
   height: $h;
@@ -54,6 +49,7 @@ $cancelbg:#f44242;
     .half-circle {
       @include size(100%, 100%);
       border: $size / 10 solid $progress-bg;
+      background: $blue;
       border-radius: 50%;
       clip: rect(0, $size / 2, $size, 0);
       left: 0;
@@ -65,10 +61,10 @@ $cancelbg:#f44242;
   .label {
     $font-size: $size / 4;
     $font-size-redo: $size * 15;
-    background: $bg;
+    background: $blue;
     border-radius: 50%;
     bottom: $font-size-redo / 10;
-    color:$check-color;
+    color: $white;
     cursor: default;
     display: block;
     vertical-align: middle;
@@ -79,18 +75,19 @@ $cancelbg:#f44242;
     right: $font-size-redo / 10;
     text-align: center;
     top: $font-size-redo / 10;
+    z-index: 1;
   }
 
   .shadow {
     @include size(100%, 100%);
-    border: $size / 10 solid $check-color;
+    border: $size / 10 solid $white;
     border-radius: 50%;
   }
 
   &.style-2 {
     .label {
       background: none;
-      color: $check-color;
+      color: $white;
     }
   }
 }
