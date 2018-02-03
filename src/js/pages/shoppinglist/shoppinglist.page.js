@@ -15,7 +15,7 @@ class ShoppingListPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="col-12">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -28,10 +28,12 @@ class ShoppingListPage extends React.Component {
 
           }}
           name="submit">
-          <input className="form-control" onChange={(e) => {
+          <input className="form-control" value={this.state.val} onChange={(e) => {
               this.setState({val: e.target.value})
             }} placeholder="Add to ShoppingList"/>
-          <button type="submit">Add</button>
+          <button type="submit" style={{
+              display: 'none'
+            }}>Add</button>
         </form>
         <ul className="list-group">
           {

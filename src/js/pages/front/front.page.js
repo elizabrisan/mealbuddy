@@ -3,18 +3,28 @@ import {connect} from 'react-redux';
 import {initialize} from './front.actions';
 import RecipeCard from '../../components/recipe-card/recipe-card.component';
 
-
 class FrontPage extends React.Component {
 
   constructor(props) {
     super(props);
-    let ingredient = props.location && props.location.state ? props.location.state.ingredient : ''
+    let ingredient = props.location && props.location.state
+      ? props.location.state.ingredient
+      : ''
     this.props._initialize(ingredient);
+  }
+
+  componentWillReceiveProps(newProps) {
+    // let ingredient = newProps.location && newProps.location.state ? newProps.location.state.ingredient : ''; if (this.props.ingredient !== ingredient) {
+    //
+    // }
+    if (newProps.ingredient !== this.props.ingredient) {
+      this.props._initialize(newProps.ingredient);
+    }
   }
 
   render() {
     return (
-        <span>
+      <span>
         {
           this.props.recipes.length > 0
             ? this.props.recipes.map(item => {
@@ -22,7 +32,7 @@ class FrontPage extends React.Component {
             })
             : (<h1>There is no recipe selection:</h1>)
         }
-        </span>
+      </span>
     )
   }
 

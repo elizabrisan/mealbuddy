@@ -21,15 +21,15 @@ class FridgePage extends React.Component {
           onSubmit={(e) => {
             e.preventDefault();
             let {val} = this.state;
-
             if (val && this.props.content.indexOf(val) === -1) {
               this.props._addToFridge(val);
               this.setState({val: ''})
             }
-
           }}
           name="submit">
-          <input className="form-control" onChange={(e) => {
+          <input className="form-control"
+            value={this.state.val}
+            onChange={(e) => {
               this.setState({val: e.target.value})
             }} placeholder="Add to fridge"/>
           <button style={{
@@ -40,11 +40,9 @@ class FridgePage extends React.Component {
           {
             this.props.content.map(item => {
               return (
-                <li key={item}
-                  onClick = {() => {
+                <li key={item} onClick={() => {
                     this.props._goToMain(item)
-                  }}
-                  className="list-group-item d-flex justify-content-between align-items-center">
+                  }} className="list-group-item d-flex justify-content-between align-items-center">
                   <span>{item}</span>
                   <button onClick={(e) => {
                       e.stopPropagation()
