@@ -7,17 +7,21 @@ import {ConnectedRouter} from 'react-router-redux';
 import FrontPage from './pages/front/front.page';
 import FridgePage from './pages/fridge/fridge.page';
 import RoundProgress from './components/round.progress.component'
+import Header from './components/header.component'
 
 export class ShellPage extends React.Component {
   render() {
     return (
       <ConnectedRouter history={this.props.history}>
-        <div className="bg">
+        <span>
+          <Header/>
           <div className="container">
-            <Route path="/" exact={true} component={FrontPage}></Route>
-            <Route path="/fridge" component={FridgePage}></Route>
+            <div className="row">
+              <Route path="/" exact={true} component={FrontPage}></Route>
+              <Route path="/fridge" component={FridgePage}></Route>
+            </div>
           </div>
-        </div>
+        </span>
       </ConnectedRouter >
     )
   }

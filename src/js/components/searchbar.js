@@ -17,6 +17,11 @@ class SearchBar extends React.Component {
         "Hash Browns"
       ],
       listStyle: {
+        position: 'absolute',
+        zIndex: 999,
+        left: 0,
+        top: 50,
+        right: 0,
         display: 'none'
       }
 
@@ -34,6 +39,7 @@ class SearchBar extends React.Component {
     this.setState({
       items: updatedList,
       listStyle: {
+        ...this.state.listStyle,
         display: updatedList.length > 0
           ? 'block'
           : 'none'
@@ -42,7 +48,7 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    return (<div className="filter-list">
+    return (<div className="filter-list" style={{position: 'relative', width: '100%'}}>
       <form>
         <fieldset className="form-group">
           <input type="text" className="form-control form-control-lg" placeholder="Search" onChange={this.filterList}/>
