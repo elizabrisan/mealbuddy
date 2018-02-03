@@ -3,11 +3,11 @@ import {IndexRoute} from 'react-router'
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux'
 
-import shoppingList from '../pages/shoppinglist/shoppinglist.reducer';
 let mappedRouteValues = {};
 
 const root = (state = {
   recipes: [],
+  shoppingList: [],
   content: []
 }, action) => {
 
@@ -44,6 +44,27 @@ const root = (state = {
         initialized: true
       }
       break;
+
+    case 'GET_SHOPPING_LIST_FULFILLED':
+      newState = {
+        ...state,
+        shoppingList: action.payload.content
+      }
+      break;
+
+    case 'ADD_TO_SHOPPINGLIST_FULFILLED':
+      newState = {
+        ...state,
+        shoppingList: action.payload.content
+      }
+      break;
+
+    case 'REMOVE_FROM_SHOPPING_LIST_FULFILLED':
+      newState = {
+        ...state,
+        shoppingList: action.payload.content
+      }
+      break;
   }
 
   return newState;
@@ -52,5 +73,4 @@ const root = (state = {
 
 export default function createReducer(asyncReducers) {
   return combineReducers({root, router: routerReducer});
-    shoppingList,
 }

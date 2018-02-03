@@ -14,7 +14,7 @@ class Header extends React.Component {
         <SearchBar/>
       </div>
       <div style={{position: 'absolute', right: 10}}>
-        <Link to="/fridge"><i className="fa fa-list-alt fa-2x" title="list"></i></Link>
+        <Link to="/shoppinglist"><i className="fa fa-list-alt fa-2x" title="list"></i></Link>
         <Link to="/fridge"><i className="fa fa-archive fa-2x" title="fridge"></i></Link>
       </div>
     </nav>)

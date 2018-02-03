@@ -20,7 +20,7 @@ export class ShellPage extends React.Component {
             <div className="row">
               <Route path="/" exact={true} component={FrontPage}></Route>
               <Route path="/fridge" component={FridgePage}></Route>
-            <Route path="/shoppinglist" component={ShoppingListPage}></Route>
+              <Route path="/shoppinglist" component={ShoppingListPage}></Route>
             </div>
           </div>
         </span>

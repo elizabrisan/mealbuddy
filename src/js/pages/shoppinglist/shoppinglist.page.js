@@ -21,7 +21,7 @@ class ShoppingListPage extends React.Component {
             e.preventDefault();
             let {val} = this.state;
 
-            if (val && this.props.content.indexOf(val) === -1) {
+            if (val && this.props.shoppingList.indexOf(val) === -1) {
               this.props._addToShoppingList(val);
               this.setState({val: ''})
             }
@@ -35,7 +35,7 @@ class ShoppingListPage extends React.Component {
         </form>
         <ul className="list-group">
           {
-            this.props.content.map(item => {
+            this.props.shoppingList.map(item => {
               return (
                 <li key={item} className="list-group-item d-flex justify-content-between align-items-center">
                     <span>{item}</span>
@@ -52,7 +52,7 @@ class ShoppingListPage extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  return state.shoppingList
+  return state.root
 }
 
 const mapDispatchToProps = (dispatch) => {

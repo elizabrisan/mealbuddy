@@ -11,7 +11,6 @@ export function addToShoppingList(item) {
       if (data.content.indexOf(item) === -1) {
         data.content.push(item);
       }
-      console.log(data)
       return Storage.saveShoppingList(data)
     }).then(() => {
       return Storage.getShoppingList()
