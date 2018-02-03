@@ -11,13 +11,16 @@ import RoundProgress from './components/round.progress.component'
 
 export class ShellPage extends React.Component {
   render() {
-    return (<ConnectedRouter history={this.props.history}>
-
-      <div className="container">
-        <Route path="/" exact={true} component={FrontPage}></Route>
-        <Route path="/fridge" component={FridgePage}></Route>
-      </div>
-    </ConnectedRouter >)
+    return (
+      <ConnectedRouter history={this.props.history}>
+        <div className="bg">
+          <div className="container">
+            <Route path="/" exact={true} component={FrontPage}></Route>
+            <Route path="/fridge" component={FridgePage}></Route>
+          </div>
+        </div>
+      </ConnectedRouter >
+    )
   }
 }
 
