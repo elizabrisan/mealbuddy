@@ -23,7 +23,7 @@ class FrontPage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return state.front
+  return state.root
 }
 
 const mapDispatchToProps = (dispatch) => {
