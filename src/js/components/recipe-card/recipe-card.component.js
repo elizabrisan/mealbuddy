@@ -5,16 +5,13 @@ export default class RecipeCard extends Component {
   render() {
     return (
       <div className="recipe-card">
-        <div className="card border-light mb-3">
-          <div className="card-header">{this.props.recipe.strMeal}</div>
-          <div className="card-body">
-            <img className="card-image" src={'http://' + this.props.recipe.strMealThumb}></img>
-            <p className="card-text">{this.props.recipe.strInstructions}</p>
+          <div className="body">
+            <img className="image" src={'http://' + this.props.recipe.strMealThumb}></img>
+            <div className="footer">
+              <div className="name">{this.props.recipe.strMeal}</div>
+              <div className="descr">{this.props.recipe.strInstructions}</div>
+            </div>
           </div>
-          <div className="card-footer text-muted">
-            <a href="#" className="fa fa-clock-o"></a>
-          </div>
-        </div>
       </div>
     )
   }
