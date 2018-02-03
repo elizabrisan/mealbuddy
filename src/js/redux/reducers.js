@@ -1,7 +1,13 @@
 import React from 'react';
-import {IndexRoute} from 'react-router'
-import {combineReducers} from 'redux';
-import {routerReducer} from 'react-router-redux'
+import {
+  IndexRoute
+} from 'react-router'
+import {
+  combineReducers
+} from 'redux';
+import {
+  routerReducer
+} from 'react-router-redux'
 
 let mappedRouteValues = {};
 
@@ -55,6 +61,25 @@ const root = (state = {
       }
       break;
 
+    case 'GET_RECIPE_BY_ID_FULFILLED':
+    const id = action.payload.meals[0].idMeal;
+      let found = state.recipes.findIndex((recipe) => {
+        return recipe.idMeal === id;
+      })
+
+      newState = {
+        ...state,
+        recipes: [
+          ...state.recipes.slice(0, found),
+          {
+            ...action.payload.meals[0]
+          },
+          ...state.recipes.slice(found + 1),
+        ],
+        initialized: true
+      }
+      break;
+
     case 'GET_SHOPPING_LIST_FULFILLED':
       newState = {
         ...state,
@@ -82,5 +107,8 @@ const root = (state = {
 }
 
 export default function createReducer(asyncReducers) {
-  return combineReducers({root, router: routerReducer});
+  return combineReducers({
+    root,
+    router: routerReducer
+  });
 }

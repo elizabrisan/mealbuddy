@@ -22,7 +22,7 @@ export default class RecipeApi {
     return api.callApi('get', {uri: `/v1/1/search.php?s=${name}`});
   }
 
-  static getRecipesById(id) {
+  static getRecipeById(id) {
     return api.callApi('get', {uri: `/v1/1/lookup.php?i=${id}`});
   }
 
