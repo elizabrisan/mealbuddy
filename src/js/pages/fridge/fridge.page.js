@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {initialize, addToFridge} from './fridge.actions';
+import {initialize, addToFridge, removeFromFridge} from './fridge.actions';
 
 class FridgePage extends React.Component {
 
@@ -16,7 +16,8 @@ class FridgePage extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={(e) => {
+        <form
+          onSubmit={(e) => {
             e.preventDefault();
             let {val} = this.state;
 
@@ -25,7 +26,8 @@ class FridgePage extends React.Component {
               this.setState({val: ''})
             }
 
-          }} name="submit">
+          }}
+          name="submit">
           <input className="form-control" onChange={(e) => {
               this.setState({val: e.target.value})
             }} placeholder="Add to fridge"/>
@@ -34,12 +36,29 @@ class FridgePage extends React.Component {
         <ul className="list-group">
           {
             this.props.content.map(item => {
-              return (<li key={item} className="list-group-item d-flex justify-content-between align-items-center">
-                {item}
-              </li>)
+              return (
+                <li key={item} className="list-group-item d-flex justify-content-between align-items-center">
+
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      let {val} = item;
+
+                      if (val && this.props.content.indexOf(val) === -1) {
+                        this.props._removeFromFridge(val);
+                        this.setState({val: ''})
+                      }
+                    }}
+                    name="remove">
+                    <span>{item}</span>
+                    <button onClick={() => {
+                        this.props._removeFromFridge(item)
+                      }}>Remove</button>
+                  </form>
+                </li>
+              )
             })
           }
-
         </ul>
       </div>
     )
@@ -56,6 +75,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     _addToFridge: (item) => {
       dispatch(addToFridge(item))
+    },
+    _removeFromFridge: (item) => {
+      dispatch(removeFromFridge(item))
     }
   }
 }

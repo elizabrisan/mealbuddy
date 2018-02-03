@@ -18,3 +18,14 @@ export function addToFridge(item) {
     })
   }
 }
+export function removeFromFridge(item) {
+  return {
+    type: 'REMOVE_FROM_FRIDGE',
+    payload: Storage.getFridge().then(data => {
+      data.content.splice(data.content.indexOf(item), 1);
+      return Storage.saveFridge(data)
+    }).then(() => {
+      return Storage.getFridge()
+    })
+  }
+}
