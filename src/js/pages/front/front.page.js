@@ -7,8 +7,7 @@ class FrontPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.props._initialize();
-    // fetch('/api/json/v1/1/filter.php?i=lamb&i=onion&i=broccoli', {   mode: 'cors',   header: {     'Access-Control-Allow-Origin': '*'   } }).then(data => {   return data.json(); }).then(data => {   console.log(data); })
+    this.props._initialize('chicken');
   }
 
   render() {
@@ -28,8 +27,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    _initialize: () => {
-      dispatch(initialize());
+    _initialize: (ingredient) => {
+      dispatch(initialize(ingredient));
     }
   }
 }

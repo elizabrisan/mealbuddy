@@ -37,7 +37,7 @@ const root = (state = {
         content: action.payload.content
       }
       break;
-    case 'GET_RANDOM_RECIPE_FULFILLED':
+    case 'GET_RECIPES_FULFILLED':
       newState = {
         ...state,
         recipes: action.payload.meals,
