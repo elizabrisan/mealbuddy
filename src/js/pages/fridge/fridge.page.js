@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
-import {initialize, addToFridge, removeFromFridge} from './fridge.actions';
+import {initialize, addToFridge, removeFromFridge, moveToShoppingList} from './fridge.actions';
 
 class FridgePage extends React.Component {
 
@@ -40,16 +40,18 @@ class FridgePage extends React.Component {
           {
             this.props.content.map(item => {
               return (
-                <li key={item}
-                  onClick = {() => {
+                <li key={item} onClick={() => {
                     this.props._goToMain(item)
-                  }}
-                  className="list-group-item d-flex justify-content-between align-items-center">
+                  }} className="list-group-item d-flex justify-content-between align-items-center">
                   <span>{item}</span>
                   <button onClick={(e) => {
                       e.stopPropagation()
                       this.props._removeFromFridge(item)
                     }}>Remove</button>
+                  <button onClick={(e) => {
+                      e.stopPropagation()
+                      this.props._moveToShoppingList(item);
+                    }}>Move to shopping list</button>
                 </li>
               )
             })
@@ -70,6 +72,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     _addToFridge: (item) => {
       dispatch(addToFridge(item))
+    },
+    _moveToShoppingList: (item) => {
+      dispatch(moveToShoppingList(item))
     },
     _removeFromFridge: (item) => {
       dispatch(removeFromFridge(item))

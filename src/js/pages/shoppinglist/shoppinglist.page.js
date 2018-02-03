@@ -15,7 +15,7 @@ class ShoppingListPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='col-12'>
         <form
           onSubmit={(e) => {
             e.preventDefault();
