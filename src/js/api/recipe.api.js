@@ -32,7 +32,7 @@ export default class RecipeApi {
     });
   }
 
-  static getRecipesById(id) {
+  static getRecipeById(id) {
     return api.callApi('get', {
       uri: `/v1/1/lookup.php?i=${id}`
     });

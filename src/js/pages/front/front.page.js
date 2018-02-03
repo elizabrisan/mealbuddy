@@ -8,7 +8,8 @@ class FrontPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.props._initialize(props.location.state.ingredient);
+    let ingredient = props.location && props.location.state ? props.location.state.ingredient : ''
+    this.props._initialize(ingredient);
   }
 
   render() {

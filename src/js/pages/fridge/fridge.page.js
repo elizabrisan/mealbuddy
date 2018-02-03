@@ -46,7 +46,8 @@ class FridgePage extends React.Component {
                   }}
                   className="list-group-item d-flex justify-content-between align-items-center">
                   <span>{item}</span>
-                  <button onClick={() => {
+                  <button onClick={(e) => {
+                      e.stopPropagation()
                       this.props._removeFromFridge(item)
                     }}>Remove</button>
                 </li>
