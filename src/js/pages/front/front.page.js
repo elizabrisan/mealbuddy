@@ -1,7 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {initialize} from './front.actions';
+import { connect } from 'react-redux';
+import { initialize } from './front.actions';
 import RecipeCard from '../../components/recipe-card/recipe-card.component';
+import SearchBar from '../../components/searchbar/searchbar.component'
 
 class FrontPage extends React.Component {
 
@@ -24,15 +25,20 @@ class FrontPage extends React.Component {
 
   render() {
     return (
-      <span className="row">
-        {
-          this.props.recipes.length > 0
-            ? this.props.recipes.map(item => {
+      <div className="row justify-content-center">
+        <div className="mt-5 mb-5 col-12 col-sm-12 col-md-8 col-lg-6">
+          <SearchBar ingredient={this.props.ingredient}
+                     onSubmit={this.props._searchByIngredient}
+                     ingredientsList={this.props.ingredientsList} />
+        </div>
+        <span className="row">
+          {
+            this.props.recipes.map(item => {
               return (<RecipeCard key={item.idMeal} recipe={item}/>)
             })
-            : (<h1>There is no recipe selection:</h1>)
-        }
-      </span>
+          }
+        </span>
+      </div>
     )
   }
 

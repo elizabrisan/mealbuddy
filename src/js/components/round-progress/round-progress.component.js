@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import "./round-progress.component.scss";
 
 class RoundProgress extends React.Component {
 

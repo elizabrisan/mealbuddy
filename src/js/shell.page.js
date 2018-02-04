@@ -7,9 +7,10 @@ import {ConnectedRouter} from 'react-router-redux';
 import FrontPage from './pages/front/front.page';
 import FridgePage from './pages/fridge/fridge.page';
 import ShoppingListPage from './pages/shoppinglist/shoppinglist.page';
-import RoundProgress from './components/round.progress.component'
-import Header from './components/header.component'
-import Loader from './components/loader.component'
+import RoundProgress from './components/round-progress/round-progress.component'
+import Header from './components/header/header.component'
+import Loader from './components/loader/loader.component'
+
 
 export class ShellPage extends React.Component {
   render() {

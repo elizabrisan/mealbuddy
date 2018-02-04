@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getById } from './recipe-card.actions';
-
-require("./recipe-card.component.scss");
+import "./recipe-card.component.scss";
 
 class RecipeCard extends Component {
 

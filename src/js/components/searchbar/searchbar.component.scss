@@ -1,0 +1,37 @@
+@import "variables";
+
+.filter-list {
+  position: relative;
+  width: '100%';
+
+  .search-label {
+    font-size: 24px;
+    font-weight: 200;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .form-group {
+    input {
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      padding: 10px;
+
+      &:focus {
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+
+  .list-group {
+    top: 88px;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 88px;
+    right: 0;
+
+    .list-group-item {
+      border-radius: 0;
+    }
+  }
+}

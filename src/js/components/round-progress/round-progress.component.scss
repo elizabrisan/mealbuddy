@@ -48,7 +48,7 @@ $size: 0.3em;
 
     .half-circle {
       @include size(100%, 100%);
-      border: $size / 10 solid $progress-bg;
+      border: $size / 10 solid $blue;
       background: $blue;
       border-radius: 50%;
       clip: rect(0, $size / 2, $size, 0);

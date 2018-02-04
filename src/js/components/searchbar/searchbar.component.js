@@ -1,5 +1,8 @@
 import React from 'react';
 import {ListGroup, ListGroupItem} from 'reactstrap';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import "./searchbar.component.scss";
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -8,11 +11,6 @@ class SearchBar extends React.Component {
       value: this.props.ingredient || '',
       closed: true,
       listStyle: {
-        position: 'absolute',
-        zIndex: 999,
-        left: 0,
-        top: 50,
-        right: 0,
         display: 'none'
       }
     }
@@ -27,10 +25,8 @@ class SearchBar extends React.Component {
   render() {
 
     return (
-      <div className="filter-list" style={{
-          position: 'relative',
-          width: '100%'
-        }}>
+      <div className="filter-list">
+        <span className="search-label">Enter the main ingredient</span>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -77,7 +73,7 @@ class SearchBar extends React.Component {
                         display: 'none'
                       }
                     })
-                    this.props.onSubmit(item.strIngredient1)
+                    this.props._searchByIngredient(item.strIngredient1)
                   }}
                  key={item.strIngredient1}>
                 {item.strIngredient1}
@@ -90,4 +86,16 @@ class SearchBar extends React.Component {
   }
 };
 
-export default SearchBar;
+const mapStateToProps = (state) => {
+  return state.root
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    _searchByIngredient: (ingredient) => {
+      dispatch(push('/', {ingredient}))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

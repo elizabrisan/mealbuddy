@@ -1,0 +1,26 @@
+@import "variables";
+
+.header {
+  background: $white;
+
+  .logo {
+    margin: 11px 0px 5px 32px;
+    background-image: url("../../../../assets/img/logo-image.svg");
+    width: 202px;
+    height: 37px;
+    background-size: 202px auto;
+  }
+
+  .buttons {
+    a {
+      color: $gray-600;
+      font-size: 25px;
+      margin: 10px;
+
+      &:hover {
+        color: $gray-500;
+      }
+    }
+
+  }
+}
