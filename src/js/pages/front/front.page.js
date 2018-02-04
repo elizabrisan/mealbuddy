@@ -25,11 +25,13 @@ class FrontPage extends React.Component {
 
   render() {
     return (
-      <div className="row justify-content-center">
-        <div className="mt-5 mb-5 col-12 col-sm-12 col-md-8 col-lg-6">
-          <SearchBar ingredient={this.props.ingredient}
-                     onSubmit={this.props._searchByIngredient}
-                     ingredientsList={this.props.ingredientsList} />
+      <div>
+        <div className="row justify-content-center">
+          <div className="mb-3 col-12 col-sm-12 col-md-8 col-lg-6">
+            <SearchBar ingredient={this.props.ingredient}
+                       onSubmit={this.props._searchByIngredient}
+                       ingredientsList={this.props.ingredientsList} />
+          </div>
         </div>
         <span className="row">
           {
