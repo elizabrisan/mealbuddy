@@ -10,7 +10,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <nav className="navbar header">
+      <nav className="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse header">
         <Link to="/" className="logo"/>
         <span className="buttons">
           <Link to="/shoppinglist"><i className="fas fa-cart-plus" title="list"></i></Link>
